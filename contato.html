@@ -108,19 +108,19 @@
       <div class="contact-channels reveal">
         <div class="channel-item">
           <div class="channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 20l1.1-5.5A8.5 8.5 0 1 1 21 11.5Z"/><path d="M8.5 9.5c0 3.5 2.5 6 6 6"/></svg></div>
-          <a href="https://wa.me/5592900000000"><h5>WhatsApp</h5><span>+55 92 9 0000-0000</span></a>
+          <a href="https://wa.me/5591983530368"><h5>WhatsApp</h5><span>+55 91 9 8353-0368</span></a>
         </div>
         <div class="channel-item">
           <div class="channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
-          <a href="mailto:contato@cpexec.com.br"><h5>E-mail</h5><span>contato@cpexec.com.br</span></a>
+          <a href="mailto:cpexec.dados@gmail.com"><h5>E-mail</h5><span>cpexec.dados@gmail.com</span></a>
         </div>
         <div class="channel-item">
           <div class="channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 11v5M8 8v.01M12 16v-3.2c0-1.1.7-1.8 1.8-1.8s1.8.7 1.8 1.8V16"/></svg></div>
-          <a href="#"><h5>LinkedIn</h5><span>/company/cpexec</span></a>
+          <a href="https://www.linkedin.com/company/cp-exec/"><h5>LinkedIn</h5><span>/company/cpexec</span></a>
         </div>
         <div class="channel-item">
           <div class="channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M9 19c-4 1.5-4-2-6-2m12 4v-3.4c0-.9.3-1.5.7-1.9-2.5-.3-5.1-1.3-5.1-5.6 0-1.2.4-2.2 1.2-3-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0c2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3 0 4.3-2.6 5.3-5.1 5.6.4.4.8 1.1.8 2.2V19"/></svg></div>
-          <a href="#"><h5>GitHub</h5><span>/cpexec</span></a>
+          <a href="https://github.com/CamyVick"><h5>GitHub</h5><span>/cpexec</span></a>
         </div>
         <div class="channel-item">
           <div class="channel-ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
@@ -219,5 +219,106 @@
 
 <script src="js/animations.js"></script>
 <script src="js/main.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('contactForm');
+  var success = document.getElementById('formSuccess');
+  if (!form) return;
+
+  // Número da CP Exec no WhatsApp
+  var whatsappNumero = '5591983530368';
+  
+  // Configurações do email
+  var emailDestino = 'seu-email@dominio.com'; // Substitua pelo email de destino
+  var emailAssunto = 'Novo contato pelo site — CP Exec';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var nome = document.getElementById('nome').value.trim();
+    var empresa = document.getElementById('empresa').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var telefone = document.getElementById('telefone').value.trim();
+    var mensagem = document.getElementById('mensagem').value.trim();
+
+    // Validação dos campos obrigatórios
+    if (!nome || !email || !mensagem) {
+      form.reportValidity();
+      return;
+    }
+
+    // 1. ENVIA PARA O WHATSAPP
+    var textoWhats =
+      '*Novo contato pelo site — CP Exec*%0A%0A' +
+      '*Nome:* ' + encodeURIComponent(nome) + '%0A' +
+      '*Empresa:* ' + encodeURIComponent(empresa || 'Não informado') + '%0A' +
+      '*Telefone:* ' + encodeURIComponent(telefone || 'Não informado') + '%0A' +
+      '*E-mail:* ' + encodeURIComponent(email) + '%0A' +
+      '*Mensagem:* ' + encodeURIComponent(mensagem);
+
+    var linkWhatsapp = 'https://wa.me/' + whatsappNumero + '?text=' + textoWhats;
+    window.open(linkWhatsapp, '_blank');
+
+    // 2. ENVIA O EMAIL AUTOMATICAMENTE
+    enviarEmail(nome, empresa, email, telefone, mensagem);
+
+    // Mostra mensagem de sucesso
+    if (success) {
+      success.style.display = 'block';
+    }
+
+    form.reset();
+  });
+
+  // Função para enviar o email
+  function enviarEmail(nome, empresa, email, telefone, mensagem) {
+    // Opção 1: Usando mailto (abre o cliente de email do usuário)
+    var subject = encodeURIComponent(emailAssunto);
+    var body = encodeURIComponent(
+      'Nome: ' + nome + '\n' +
+      'Empresa: ' + (empresa || 'Não informado') + '\n' +
+      'Telefone: ' + (telefone || 'Não informado') + '\n' +
+      'E-mail: ' + email + '\n\n' +
+      'Mensagem:\n' + mensagem
+    );
+    
+    var mailtoLink = 'mailto:' + emailDestino + '?subject=' + subject + '&body=' + body;
+    
+    // Abre o cliente de email em uma nova aba
+    window.open(mailtoLink, '_blank');
+    
+    // Opção 2: Se preferir enviar via serviço de terceiros (descomente abaixo)
+    /*
+    // Usando FormSubmit.co (serviço gratuito)
+    var formData = new FormData();
+    formData.append('_captcha', 'false');
+    formData.append('_template', 'table');
+    formData.append('_subject', emailAssunto);
+    formData.append('Nome', nome);
+    formData.append('Empresa', empresa || 'Não informado');
+    formData.append('Telefone', telefone || 'Não informado');
+    formData.append('Email', email);
+    formData.append('Mensagem', mensagem);
+    
+    fetch('https://formsubmit.co/ajax/' + emailDestino, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao enviar email');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Email enviado com sucesso!', data);
+    })
+    .catch(error => {
+      console.error('Erro ao enviar email:', error);
+    });
+    */
+  }
+})();
+</script>
 </body>
 </html>
