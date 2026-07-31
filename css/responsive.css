@@ -1,0 +1,56 @@
+/* =========================================================
+   CP EXEC — responsive.css
+   Breakpoints: desktop > 1100px | notebook 900-1100 | tablet 560-900 | mobile < 560
+   ========================================================= */
+
+/* ---------- notebook / tablet landscape ---------- */
+@media (max-width:1100px){
+  .svc-grid{ grid-template-columns:repeat(2,1fr); }
+  .mvv-grid{ grid-template-columns:1fr; }
+  .values-grid{ grid-template-columns:repeat(2,1fr); }
+  .tech-grid{ grid-template-columns:repeat(3,1fr); }
+  .case-grid, .testimonial-grid{ grid-template-columns:repeat(2,1fr); }
+  .stat-grid-full{ grid-template-columns:repeat(2,1fr); }
+  .contact-grid{ grid-template-columns:1fr; }
+}
+
+/* ---------- tablet ---------- */
+@media (max-width:900px){
+  .nav-links{ display:none; }
+  .nav-cta .btn{ display:none; }
+  .nav-toggle{ display:block; }
+
+  .about .wrap{ grid-template-columns:1fr; gap:48px; }
+  .svc-grid{ grid-template-columns:1fr; }
+  .svc-detail .wrap{ grid-template-columns:1fr; gap:36px; }
+  .stat-grid{ grid-template-columns:1fr; gap:36px; }
+  .steps{ grid-template-columns:1fr 1fr; }
+  .step{ border-bottom:1px solid var(--line); }
+  .hero-strip{ gap:20px; }
+  .hero-strip div{ padding-right:20px; margin-right:20px; }
+  .cta-inner{ flex-direction:column; align-items:flex-start; }
+  .tech-grid{ grid-template-columns:repeat(2,1fr); }
+  .before-after{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr 1fr; gap:32px; }
+  .form-row{ grid-template-columns:1fr; }
+}
+
+/* ---------- mobile ---------- */
+@media (max-width:560px){
+  .steps{ grid-template-columns:1fr; }
+  .step{ border-right:none; }
+  .wrap{ padding:0 20px; }
+  .section-pad{ padding:80px 0; }
+  .section-pad-sm{ padding:60px 0; }
+  .hero{ padding:150px 0 90px; }
+  .pretitle-bar{ padding:130px 0 48px; }
+  .values-grid{ grid-template-columns:1fr; }
+  .tech-grid{ grid-template-columns:1fr; }
+  .case-grid, .testimonial-grid{ grid-template-columns:1fr; }
+  .stat-grid-full{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr; gap:28px; }
+  footer .wrap.bottom{ flex-direction:column; align-items:flex-start; }
+  .form-card{ padding:26px; }
+  .hero-actions{ flex-direction:column; align-items:stretch; }
+  .hero-actions .btn{ justify-content:center; }
+}
