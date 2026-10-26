@@ -15,9 +15,9 @@
     if(!f.checkValidity()){f.reportValidity();return}
     btn.disabled=true; btn.textContent='Enviando…';
     fetch('https://formsubmit.co/ajax/cpexec.dados@gmail.com',{method:'POST',headers:{Accept:'application/json'},body:new FormData(f)})
-      .then(function(r){if(!r.ok)throw 0;return r.json()})
+      .then(function(r){return r.json().then(function(d){if(!r.ok||d.success===false||d.success==='false')throw d;return d})})
       .then(function(){ok.classList.add('show');f.reset()})
-      .catch(function(){er.classList.add('show')})
+      .catch(function(d){console.warn('Envio recusado:',d&&d.message);er.classList.add('show')})
       .finally(function(){btn.disabled=false;btn.textContent='Solicitar diagnóstico'});
   });
 })();
