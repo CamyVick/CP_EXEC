@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VoxBridge: camada de compatibilidade de dados para contact centers | CP Exec</title><meta name="description" content="Como a VoxBridge faz migração de plataforma de contact center sem quebrar tabelas e relatórios: modelo canônico, validação, quarentena e contratos de saída versionados.">
+<link rel="canonical" href="https://www.cpexec.com.br/voxbridge.html">
+<meta property="og:type" content="website"><meta property="og:locale" content="pt_BR"><meta property="og:site_name" content="VoxBridge by CP Exec">
+<meta property="og:title" content="VoxBridge: camada de compatibilidade de dados para contact centers | CP Exec"><meta property="og:description" content="Como a VoxBridge faz migração de plataforma de contact center sem quebrar tabelas e relatórios: modelo canônico, validação, quarentena e contratos de saída versionados."><meta property="og:url" content="https://www.cpexec.com.br/voxbridge.html">
+<meta name="theme-color" content="#070A1C"><link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/vox.css"></head><body>
+<a class="skip" href="#main">Pular para o conteúdo</a><div id="site-header"></div><main id="main">
+<div class="hero"><div class="wrap"><h1>Uma camada entre a plataforma <span>e o seu banco de dados.</span></h1>
+<p class="lead">A VoxBridge recebe os dados das plataformas de origem, preserva o dado bruto, valida, padroniza em um modelo canônico e publica contratos de saída estáveis.</p><div class="pipe" role="img" aria-label="Fluxo: fontes, ingestão, validação, modelo canônico, contratos de saída, destinos">
+<div class="node b"><strong>Fontes</strong><span class="src">Genesys · Avaya · Five9 · Talkdesk · outras</span></div>
+<div class="node"><strong>Ingestão</strong>dados brutos preservados</div>
+<div class="node"><strong>Validação</strong>tipos, duplicidades, quarentena</div>
+<div class="node v"><strong>Modelo canônico</strong>padronização</div>
+<div class="node k"><strong>Contratos de saída</strong>versionados e estáveis</div>
+<div class="node b"><strong>Destinos</strong>banco · BI · relatórios</div></div>
+<p class="note">Plataformas listadas são exemplos de fontes possíveis, não integrações já disponíveis.</p></div></div>
+<section class="light"><div class="wrap"><h2>Em linguagem simples</h2><p class="mute">A VoxBridge traduz os dados de qualquer plataforma suportada para um padrão único e entrega no formato que seus relatórios já usam. Abaixo, o detalhamento técnico para BI e TI.</p><h2 style="margin-top:48px">Camadas</h2><div class="grid">
+<div class="card"><h3>Ingestão e raw</h3><p class="mute">O dado bruto é guardado como chegou, permitindo reprocessamento.</p></div>
+<div class="card"><h3>Validação</h3><p class="mute">Campos obrigatórios, tipos e duplicidades. Inválidos vão para quarentena.</p></div>
+<div class="card"><h3>Modelo canônico</h3><p class="mute">De-para de status, pausas e tabulações, por fonte.</p></div>
+<div class="card"><h3>Publicação</h3><p class="mute">Contratos de saída com versão de schema.</p></div></div></div></section>
+<section><div class="wrap"><h2>Exemplo de payload e saída (fictício)</h2><div class="two">
+<pre>{ "source": "fonte_b",
+  "agent": "A-102",
+  "presence": "ON_QUEUE",
+  "ts": "2026-01-15T10:02:11Z" }</pre>
+<pre>{ "agent_presence": "AVAILABLE",
+  "agent_id": "A-102",
+  "contract_version": "1.0",
+  "mapping_note": "regra por fonte" }</pre></div>
+<h2 style="margin-top:48px">Campos ausentes e limites</h2>
+<table><tr><th>Situação</th><th>Tratamento</th></tr>
+<tr><td>Campo existe nas duas fontes</td><td>Mapeado para o canônico</td></tr>
+<tr><td>Campo inexistente na fonte nova</td><td class="warn">Sinalizado como ausente; diferença comunicada</td></tr>
+<tr><td>Estado sem equivalente</td><td class="warn">Não forçado; regra explícita ou quarentena</td></tr></table>
+<p class="note">A VoxBridge não substitui plataformas de telefonia e não garante equivalência entre todos os indicadores. Requisitos de implantação são definidos no diagnóstico.</p></div></section><section><div class="wrap"><h2>Vai trocar de plataforma de atendimento?</h2><p class="mute">Entenda como preservar suas tabelas, indicadores e relatórios antes de iniciar a migração.</p><p style="margin-top:24px"><a class="btn btn-p" href="contato.html">Conversar sobre minha migração</a></p></div></section></main><div id="site-footer"></div><script src="js/vox.js"></script></body></html>
