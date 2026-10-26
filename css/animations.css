@@ -61,6 +61,12 @@
 .flow-arrow svg{ animation:floatY 2.2s ease-in-out infinite; }
 @keyframes floatY{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(4px);} }
 
+/* hexagon marker pulse (mapa Onde Estamos Atuando) */
+@keyframes hexPulse{
+  0%{ transform:translate(-50%,-50%) scale(1); opacity:.75; }
+  100%{ transform:translate(-50%,-50%) scale(2.6); opacity:0; }
+}
+
 /* dash bars grow-in */
 .dash-bars .bar{ transform:scaleY(0); transform-origin:bottom; transition:transform .8s cubic-bezier(.2,.8,.2,1); }
 .dash-panel.in .bar{ transform:scaleY(1); }
